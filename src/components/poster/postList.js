@@ -1,13 +1,13 @@
 export default class PostList {
   constructor(postService) {
-    //this.posts = [];
+    // this.posts = [];
     this.postService = postService;
 
-    /*if (posts) {
+    /* if (posts) {
       posts.forEach((item) => {
         this.posts.push(item);
       });
-    }*/
+    } */
   }
 
   async add(post) {

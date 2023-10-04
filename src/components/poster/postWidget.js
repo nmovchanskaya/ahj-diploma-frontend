@@ -176,8 +176,8 @@ export default class PostWidget {
 
       this.postContainer = div;
 
-      //scroll container to the bottom
-      setTimeout(() => {this.container.scrollTop = this.container.scrollHeight;}, 100);
+      // scroll container to the bottom
+      setTimeout(() => { this.container.scrollTop = this.container.scrollHeight; }, 100);
     });
   }
 
@@ -232,8 +232,8 @@ export default class PostWidget {
       });
     }
 
-    //scroll container to the bottom
-    setTimeout(() => {this.container.scrollTop = this.container.scrollHeight;}, 100);
+    // scroll container to the bottom
+    setTimeout(() => { this.container.scrollTop = this.container.scrollHeight; }, 100);
   }
 
   async createPostShowAll(content, type) {

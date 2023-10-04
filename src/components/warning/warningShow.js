@@ -1,4 +1,4 @@
-import Position from "../poster/position";
+import Position from '../poster/position';
 
 export default class WarningShow {
   constructor(container) {
@@ -57,7 +57,7 @@ export default class WarningShow {
     const text = this.inputPosElem.value;
     try {
       position = Position.checkCoords(text);
-      //this.currentPosition = position;
+      // this.currentPosition = position;
     } catch (err) {
       console.log(err);
       alert(err);

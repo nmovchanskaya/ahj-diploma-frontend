@@ -37,6 +37,9 @@
         "no-useless-constructor": "off",
         "no-empty-function": "off",
         "prefer-destructuring":"off",
-        "no-empty": "off"
+        "no-empty": "off",
+        "no-undef": "off",
+        "no-return-await": "off",
+        "no-useless-escape": "off"
     }
 }
