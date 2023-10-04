@@ -14,8 +14,8 @@ export default class PostWidget {
       this.urlServer = 'http://localhost:3000';
     }
     else {
-      //this.urlServer = 'http://localhost:3000';
-      this.urlServer = 'https://ahj-diploma-backend.onrender.com';
+      this.urlServer = 'http://localhost:3000';
+      //this.urlServer = 'https://ahj-diploma-backend.onrender.com';
     }
 
     this.containerName = containerName;
@@ -26,6 +26,7 @@ export default class PostWidget {
     this.onAddLocation = this.onAddLocation.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onFilter = this.onFilter.bind(this);
+    this.onClearFilter = this.onClearFilter.bind(this);
   }
 
   addFormMarkup() {
@@ -58,12 +59,14 @@ export default class PostWidget {
     this.searchForm = document.querySelector('.search-form');
     this.searchBtn = document.querySelector('.search-icon');
     this.filterElem = document.querySelector('.filter-attach');
+    this.filterClear = document.querySelector('.filter_all');
 
     this.form.addEventListener('submit', this.onAddSubmit);
     this.locationBtn.addEventListener('click', this.onAddLocation);
     this.searchForm.addEventListener('submit', this.onSearchSubmit);
     this.searchBtn.addEventListener('click', this.onSearchSubmit);
     this.filterElem.addEventListener('click', this.onFilter);
+    this.filterClear.addEventListener('click', this.onClearFilter);
   }
 
   renderPost(post) {
@@ -279,26 +282,39 @@ export default class PostWidget {
     let searchedPosts;
     const searchedText = this.searchInput.value.trim();
     if (searchedText) {
-      searchedPosts = await this.postList.filter('content', searchedText);
+      this.postList.filter('content', searchedText)
+        .then((posts) => {
+          this.clearPosts();
+          this.updatePosts(posts);
+        });
     }
-
-    // refresh list of posts
-    this.clearPosts();
-    this.updatePosts(searchedPosts);
   }
 
   async onFilter(e) {
     let filteredPosts;
     if (e.target.classList.contains('filter_img')) {
-      filteredPosts = await this.postList.filter('type', 'img');
+      this.postList.filter('type', 'img')
+        .then((posts) => {
+          this.clearPosts();
+          this.updatePosts(posts);
+        });
     } else if (e.target.classList.contains('filter_video')) {
-      filteredPosts = await this.postList.filter('type', 'vid');
+      this.postList.filter('type', 'vid')
+        .then((posts) => {
+          this.clearPosts();
+          this.updatePosts(posts);
+        });
     } else if (e.target.classList.contains('filter_audio')) {
-      filteredPosts = await this.postList.filter('type', 'aud');
+      this.postList.filter('type', 'aud')
+        .then((posts) => {
+          this.clearPosts();
+          this.updatePosts(posts);
+        });
     }
+  }
 
-    // refresh list of posts
+  onClearFilter(e) {
     this.clearPosts();
-    this.updatePosts(filteredPosts);
+    this.updatePosts();
   }
 }

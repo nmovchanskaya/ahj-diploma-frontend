@@ -69,7 +69,6 @@ export default class VideoRec {
     this.videoPlayer.srcObject = stream;
     this.videoPlayer.muted = true;
     this.toggleVideoBlock();
-    this.form.appendChild(this.videoControls);
 
     this.videoPlayer.addEventListener('canplay', this.onCanPlay);
 
