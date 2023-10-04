@@ -74,6 +74,11 @@ input.post-text {
 }
 
 /*===video===*/
+.video-container {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+}
 .post-video {
     position: absolute;
     right: 50px;

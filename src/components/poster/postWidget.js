@@ -14,6 +14,7 @@ export default class PostWidget {
       this.urlServer = 'http://localhost:3000';
     }
     else {
+      //this.urlServer = 'http://localhost:3000';
       this.urlServer = 'https://ahj-diploma-backend.onrender.com';
     }
 
@@ -192,11 +193,11 @@ export default class PostWidget {
     this.warningShow.bindToDOM();
 
     // create new FileUploader
-    this.fileUploader = new FileUploader(this.form, this.postService, this.createPostShowAll.bind(this));
+    this.fileUploader = new FileUploader(this.form, this.postService, this.createPostShowAll.bind(this), this.urlServer);
     this.fileUploader.bindToDOM();
 
     // create new VideoRec
-    this.videoRec = new VideoRec(this.form, this.createPostShowAll.bind(this), this.postService);
+    this.videoRec = new VideoRec(this.form, this.createPostShowAll.bind(this), this.postService, this.urlServer);
     this.videoRec.bindToDOM();
   }
 
