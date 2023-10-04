@@ -1,10 +1,11 @@
 import Timer from '../poster/timer';
 
 export default class VideoRec {
-  constructor(form, createPostShowAll, postService) {
+  constructor(form, createPostShowAll, postService, url) {
     this.form = form;
     this.createPostShowAll = createPostShowAll;
     this.postService = postService;
+    this.url = url;
 
     this.onAddVideoSubmit = this.onAddVideoSubmit.bind(this);
     this.updateTimer = this.updateTimer.bind(this);
@@ -114,7 +115,7 @@ export default class VideoRec {
 
         this.postService.upload(data, (d) => {
           console.log('uploaded');
-          url = `http://localhost:3000${d}`;
+          url = `${this.url}${d}`;//`http://localhost:3000${d}`;
 
           this.createPostShowAll(url, 'vid');
         });

@@ -1,8 +1,9 @@
 export default class FileUploader {
-  constructor(form, postService, createPostShowAll) {
+  constructor(form, postService, createPostShowAll, url) {
     this.postService = postService;
     this.createPostShowAll = createPostShowAll;
     this.form = form;
+    this.url = url;
 
     this.onAddFile = this.onAddFile.bind(this);
     this.onDropFile = this.onDropFile.bind(this);
@@ -34,7 +35,7 @@ export default class FileUploader {
 
     this.postService.upload(data, (d) => {
       console.log('uploaded');
-      url = `http://localhost:3000${d}`;
+      url = `${this.url}${d}`;//`http://localhost:3000${d}`;
 
       if (file.type.includes('image')) {
         this.createPostShowAll(url, 'img');
@@ -59,7 +60,7 @@ export default class FileUploader {
 
     this.postService.upload(data, (d) => {
       console.log('uploaded');
-      url = `http://localhost:3000${d}`;
+      url = `${this.url}${d}`;//`http://localhost:3000${d}`;
 
       if (file.type.includes('image')) {
         this.createPostShowAll(url, 'img');

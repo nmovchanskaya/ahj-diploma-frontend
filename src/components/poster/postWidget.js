@@ -9,30 +9,22 @@ import VideoRec from '../media/videoRec';
 
 export default class PostWidget {
   constructor(containerName) {
+    // set urls to the server
+    if (process.env.NODE_ENV === 'development') {
+      this.urlServer = 'http://localhost:3000';
+    }
+    else {
+      this.urlServer = 'https://ahj-diploma-backend.onrender.com';
+    }
+
     this.containerName = containerName;
-    this.postService = new PostService();
+    this.postService = new PostService(this.urlServer);
     this.postList = new PostList(this.postService);
 
     this.onAddSubmit = this.onAddSubmit.bind(this);
     this.onAddLocation = this.onAddLocation.bind(this);
     this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onFilter = this.onFilter.bind(this);
-  }
-
-  init() {
-    const uploadForm = document.querySelector('.upload-form');
-    const previewImage = document.querySelector('.preview-image');
-
-    uploadForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const data = new FormData(uploadForm);
-
-      this.postService.upload(data, (d) => {
-        console.log('uploaded');
-        previewImage.src = `http://localhost:3000${d}`;
-      });
-    });
   }
 
   addFormMarkup() {

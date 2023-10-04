@@ -5,8 +5,13 @@ import createRequest from '../../api/createRequest';
  *  Содержит методы для отправки запросов на сервер и получения ответов
  * */
 export default class PostService {
+  constructor(url) {
+    this.url = url;
+  }
+
   async list(callback) {
     createRequest({
+      url: this.url,
       sendMethod: 'GET',
       method: 'allPosts',
       callback,
@@ -15,6 +20,7 @@ export default class PostService {
 
   async get(id, callback) {
     createRequest({
+      url: this.url,
       sendMethod: 'GET',
       method: 'postById',
       id,
@@ -24,6 +30,7 @@ export default class PostService {
 
   async create(data, callback) {
     createRequest({
+      url: this.url,
       sendMethod: 'POST',
       method: 'createPost',
       data,
@@ -33,6 +40,7 @@ export default class PostService {
 
   async filter(data, callback) {
     createRequest({
+      url: this.url,
       sendMethod: 'POST',
       method: 'filterPosts',
       data,
@@ -42,6 +50,7 @@ export default class PostService {
 
   async upload(data, callback) {
     createRequest({
+      url: this.url,
       sendMethod: 'PUT',
       method: 'upload',
       data,
