@@ -14,8 +14,7 @@ export default class PostWidget {
       this.urlServer = 'http://localhost:3000';
     }
     else {
-      this.urlServer = 'http://localhost:3000';
-      //this.urlServer = 'https://ahj-diploma-backend.onrender.com';
+      this.urlServer = 'https://ahj-diploma-backend.onrender.com';
     }
 
     this.containerName = containerName;
@@ -287,6 +286,10 @@ export default class PostWidget {
           this.clearPosts();
           this.updatePosts(posts);
         });
+    }
+    else {
+      this.clearPosts();
+      this.updatePosts();
     }
   }
 

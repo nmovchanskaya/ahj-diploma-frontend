@@ -167,6 +167,7 @@ input.post-text {
     width: 500px;
     position: fixed;
     top: 10px;
+    margin-bottom: 10px;
 }
 .search-form {
     width: 200px;
