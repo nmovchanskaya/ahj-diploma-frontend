@@ -6,16 +6,21 @@ body {
 }
 .container {
     max-width: 500px;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 140px);
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     overflow: auto;
+    background-color: rgb(235, 249, 245);
+    padding: 10px;
+    border-radius: 10px;
 }
 .post {
     padding: 20px;
     border: 1px solid rgb(160, 159, 159);
     border-radius: 30px;
     margin-bottom: 10px;
+    background-color: white;
 }
 .post__date {
     text-align: right;
@@ -167,7 +172,6 @@ input.post-text {
     width: 500px;
     position: fixed;
     top: 10px;
-    margin-bottom: 10px;
 }
 .search-form {
     width: 200px;
